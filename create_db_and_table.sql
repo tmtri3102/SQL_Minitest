@@ -1,34 +1,45 @@
-create database quanlyhocvien;
-use quanlyhocvien;
-create table students(
-	studentId int not null primary key auto_increment,
-    studentFullName varchar(100),
-    addressId int,
-    age int,
-    phone varchar(10) unique,
-    classId int,
-    foreign key(classId) references class(classId),
-    foreign key(addressId) references address(addressId)
+-- Tạo cơ sở dữ liệu và sử dụng
+CREATE DATABASE quanlyhocvien;
+USE quanlyhocvien;
+
+-- Tạo bảng Students
+CREATE TABLE students (
+                          studentId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                          studentFullName VARCHAR(100),
+                          addressId INT,
+                          age INT,
+                          phone VARCHAR(10) UNIQUE,
+                          classId INT,
+                          FOREIGN KEY (classId) REFERENCES class(classId),
+                          FOREIGN KEY (addressId) REFERENCES address(addressId)
 );
-create table class(
-	classId int not null primary key auto_increment,
-    className varchar(20),
-    language varchar(10),
-    classDescription varchar(100)
+
+-- Tạo bảng Class
+CREATE TABLE class (
+                       classId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                       className VARCHAR(20),
+                       language VARCHAR(10),
+                       classDescription VARCHAR(100)
 );
-create table point(
-	pointId int not null primary key auto_increment,
-    courseId int,
-    studentId int,
-    point int,
-    foreign key (courseId) references course(courseId)
+
+-- Tạo bảng Point
+CREATE TABLE point (
+                       pointId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                       courseId INT,
+                       studentId INT,
+                       point INT,
+                       FOREIGN KEY (courseId) REFERENCES course(courseId)
 );
-create table course(
-	courseId int not null primary key auto_increment,
-    courseName varchar(20),
-    courseDescription varchar(100)
+
+-- Tạo bảng Course
+CREATE TABLE course (
+                        courseId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                        courseName VARCHAR(20),
+                        courseDescription VARCHAR(100)
 );
-create table address(
-	addressId int not null primary key auto_increment,
-    addressName varchar(50)
+
+-- Tạo bảng Address
+CREATE TABLE address (
+                         addressId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                         addressName VARCHAR(50)
 );
